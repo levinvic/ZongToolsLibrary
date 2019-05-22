@@ -280,15 +280,15 @@ Interpolator 插值器，此為呼吸函數，用於補間動畫的速率控制
 
 其他預設的有
 
-- AccelerateDecelerateInterpolator 在动画开始与介绍的地方速率改变比较慢，在中间的时候加速
-- AccelerateInterpolator 在动画开始的地方速率改变比较慢，然后开始加速
-- AnticipateInterpolator 开始的时候向后然后向前甩
-- AnticipateOvershootInterpolator 开始的时候向后然后向前甩一定值后返回最后的值
-- BounceInterpolator 动画结束的时候弹起
-- CycleInterpolator 动画循环播放特定的次数，速率改变沿着正弦曲线
-- DecelerateInterpolator 在动画开始的地方快然后慢
-- LinearInterpolator 以常量速率改变
-- OvershootInterpolator 向前甩一定值后再回到原来位置
+- AccelerateDecelerateInterpolator 在動畫開始與介紹的地方速率改變比較慢，在中間的時候加速
+- AccelerateInterpolator 在動畫開始的地方速率改變比較慢，然後開始加速
+- AnticipateInterpolator 開始的時候向後然後向前甩
+- AnticipateOvershootInterpolator 開始的時候向後然後向前甩一定值後返回最後的值
+- BounceInterpolator 動畫結束的時候彈起
+- CycleInterpolator 動畫循環播放特定的次數，速率改變沿著正弦曲線
+- DecelerateInterpolator 在動畫開始的地方快然後慢
+- LinearInterpolator 以常量速率改變
+- OvershootInterpolator 向前甩一定值後再回到原來的位置
 
 xml 寫法：
 
