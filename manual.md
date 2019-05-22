@@ -1,6 +1,3 @@
-<script type="text/javascript" src="./assert/2jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="./assert/2html.js"></script><link rel="stylesheet" type="text/css" href="./assert/2style.css">
-
 # 目錄
 
 [TOC]
@@ -42,9 +39,81 @@ dependencies {
 }
 ```
 
+---
+
+### Vlayout 用法
+
+```java
+private RecyclerView rv_chat;
+
+/**
+ * RecyclerView 設置
+ */
+VirtualLayoutManager virtualLayoutManager = new VirtualLayoutManager(mContext);
+        rv_chat.setLayoutManager(virtualLayoutManager);
+
+final RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
+viewPool.setMaxRecycledViews(0, 10);
+rv_chat.setRecycledViewPool(viewPool);
+
+delegateAdapter = new DelegateAdapter(virtualLayoutManager);
+rv_chat.setAdapter(delegateAdapter);
+/**
+ * 新增子Adapter
+ */
+StickyLayoutHelper sticky = new StickyLayoutHelper();
+BaseDelegateAdapter stickyAdapter =
+        new BaseDelegateAdapter(mContext, sticky, R.layout.vlayout_chat, 1, Config.STICKY_VIEW_TYPE) {
+            @Override
+            public void onBindViewHolder(BaseViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
+                holder.getView(R.id.img_diamond).setOnClickListener(v -> {
+                    // 儲值API
+                });
+
+                holder.getView(R.id.tbx_diamond_count).setOnClickListener(v -> {
+                    // 儲值API
+                });
+            }
+        };
+delegateAdapter.addAdapter(stickyAdapter);
+```
+
+---
+
+### MVP用法
+
+onCreate
+
+```java
+InitData();
+```
+
+InitData
+
+```java
+presenter = new Presenter(new Model(),this);
+```
+
+onDestroy
+
+```java
+presenter.dispose();
+```
+
+Call API
+
+```java
+presenter.setUser();
+```
+
+
+
 
 
 ---
+
+
 
 ### 隱藏鍵盤
 
@@ -77,9 +146,47 @@ BlockEmpty 內頁面抽過去使用即可，將 import Empty 資料夾移除
 
 ### PopupWindow
 
+在 anim 加入 publish_in.xml, publish_out.xml
+
+publish_in.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" >
+    <translate
+        android:duration="300"
+        android:fromYDelta="100%p" />
+</set>
+```
+
+publish_out.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" >
+    <translate
+        android:duration="300"
+        android:toYDelta="100%p" />
+</set>
+```
+
+style.xml 加入
+
+```xml
+<resource>
+    ...
+    <style name="publish_setting" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/publish_in</item>
+        <item name="@android:windowExitAnimation">@anim/publish_out</item>
+    </style>
+</resource>
+```
+
+
+
 ```java
 //PopupWindow 初始化
-PopupWindowMgr popupWindowMgr = new PopupWindowMgr.init().setContext(getBaseContext()).setShowView(R.layout.view_upload).build();
+PopupWindowMgr popupWindowMgr = new PopupWindowMgr.init().setContext(getBaseContext()).setAnimStyle(R.anim.publish_setting).setShowView(R.layout.view_upload).build();
 //PopupWindow 顯示
 popupWindowMgr.showAtLocation(R.layout.view_upload,Gravity.BOTTOM,0,0);
 //初始化物件
