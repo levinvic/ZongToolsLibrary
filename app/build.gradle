@@ -25,9 +25,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.squareup.okhttp3:okhttp:3.4.1'
-    implementation(name: 'picasso-2.71828', ext: 'aar')
-    implementation files('libs/glide-3.8.0.jar')
-    implementation files('libs/rxjava-2.1.5.jar')
     implementation project(':zongtoolslibrary')
 }
