@@ -140,6 +140,8 @@ public boolean dispatchTouchEvent(MotionEvent ev) {
 
 BlockEmpty 內頁面抽過去使用即可，將 import Empty 資料夾移除
 
+記得在有 AndroidManifest.xml 加入有新增的 Activity
+
 可從外部呼 Call_API 方法手動操作API
 
 ---
