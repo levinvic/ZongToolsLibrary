@@ -83,7 +83,7 @@ public class PopupWindowMgr {
         private int mHeight = WindowManager.LayoutParams.WRAP_CONTENT;  //設定高，預設Xml高
         private boolean mFocusable = true; //是否取得焦點
         private boolean mOutSideClickClose = true;  //是否取消外部點擊
-        private int mAnimStyle = R.style.publish_setting; //設定動畫
+        private int mAnimStyle; //設定動畫
         private int mMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE;    //適配虛擬鍵
         private ColorDrawable mColorDrawable = new ColorDrawable(0x00000000);   //設定背景，預設透明
 
